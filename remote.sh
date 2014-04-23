@@ -36,7 +36,7 @@ case $Hpfad in
 /airplay)
   echo -e 'HTTP/1.1 202 OK\r\n'
   echo airplay
-  osascript ~/Applications/Frankfurt\ Airport.scpt
+  osascript airport.scpt
 ;;
 /sleeping)
   echo -e 'HTTP/1.1 202 OK\r\n'
