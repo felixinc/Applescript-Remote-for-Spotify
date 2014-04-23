@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Remote</title>
+<script type="text/javascript" language="javascript">
+
+    var http_request = false;
+
+    function myRequest(url) {
+
+        http_request = false;
+
+        if (window.XMLHttpRequest) {
+            http_request = new XMLHttpRequest();
+            if (http_request.overrideMimeType) {
+                http_request.overrideMimeType('text/xml');
+            }
+        } else if (window.ActiveXObject) {
+            try {
+                http_request = new ActiveXObject("Msxml2.XMLHTTP");
+            } catch (e) {
+                try {
+                    http_request = new ActiveXObject("Microsoft.XMLHTTP");
+                } catch (e) {}
+            }
+        }
+
+        if (!http_request) {
+            alert('Ende :( Kann keine XMLHTTP-Instanz erzeugen');
+            return false;
+        }
+        http_request.onreadystatechange = alertInhalt;
+        http_request.open('GET', url, true);
+        http_request.send(null);
+
+    }
+
+    function alertInhalt() {
+        if (http_request.readyState == 4) {
+       		if (http_request.responseText.length >= 0)	{
+	       		//alert(http_request.status);
+	            //if (http_request.status >= 200 && http_request.status < 300 ) {
+	            	//alert(http_request.responseText);
+	            	//alert(document.getElementById("remote").innerHTML);
+                	document.getElementById("remote").innerHTML = http_request.responseText;
+    	           }
+        	    else {
+	            	//alert(document.getElementById("remote").innerText);
+                	document.getElementById("remote").innerHTML = 'Bei dem Request ist ein Problem aufgetreten.';
+            	//}
+            }
+        }
+    }
+</script>
+</head>
+<body>
+<table border style="text-align:center; font-size:200%;">
+<tr style="height:100px;">
+<td style="width:100px;" onClick="myRequest('airplay');">🔊</td>
+<td style="width:100px;" onClick="myRequest('info');">ⓘ</td>
+<td style="width:100px;" onClick="myRequest('sleeping');">💤</td>
+</tr>
+<tr style="height:100px;">
+<td onClick="myRequest('prev');">⏪</td>
+<td onClick="myRequest('pp');">▶❙❙</td>
+<td onClick="myRequest('next');">⏩</td>
+</tr>
+<tr style="height:100px;">
+<td id="remote" colspan="3" style="font-size:50%;">Remote</td>
+</tr>
+</table>
+</body>
