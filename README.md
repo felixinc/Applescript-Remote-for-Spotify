@@ -17,4 +17,4 @@ And of course this stub can easily be augmented into a remote for any other play
 
 To use this software just open a Terminal window, go to the directory where you saved these files and execute ./server.sh. Maybe you have to make it executable first (chmod +x server.sh). Then open your browser and navigate to http://your-ip-address:8080/
 
-For the AirPlay functionality enter the name of your AirPlay device in line 1 of airport.scpt.
+For the AirPlay functionality enter the name of your AirPlay device in line 1 of airport.scpt, change "Ton" (german for sound) and "Einstellungen" (german for settings) to the naming of the system preferneces in your language and allow gui scripting for this script. All other functions will work without further adjustment.
