@@ -14,3 +14,7 @@ These criteria excluded the Spotify App (because it doesn't support AirPlay) and
 This solution works, but at the same time there are a few things to improve, e.g. the name of the AirPlay speakers is hard coded by now.
 
 And of course this stub can easily be augmented into a remote for any other player software that supports Applescript.
+
+To use this software just open a Terminal window, go to the directory where you saved these files and execute ./server.sh. Maybe you have to make it executable first (chmod +x server.sh). Then open your browser and navigate to http://your-ip-address:8080/
+
+For the AirPlay functionality enter the name of your AirPlay device in line 1 of airport.scpt.
