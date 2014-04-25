@@ -6,41 +6,40 @@ read Hbefehl Hpfad Hproto
 case $Hpfad in
 /info)
   echo -e 'HTTP/1.1 202 OK\r\n' 
-  osascript -e 'tell application "Spotify" to get "Title: " & name of current track & " <br> " & "Album: " & album of current track & " <br> " & "Artist: " & artist of current track'
+  osascript -e 'tell application "Spotify" to get "<b>Title:</b> " & name of current track & " <br> " & "<b>Album:</b> " & album of current track & " <br> " & "<b>Artist:</b> " & artist of current track'
 ;;
 /next)
   echo -e 'HTTP/1.1 202 OK\r\n'
   osascript -e 'tell application "Spotify" to next track'
-  echo next
+  osascript -e 'tell application "Spotify" to get "<b>Title:</b> " & name of current track & " <br> " & "<b>Album:</b> " & album of current track & " <br> " & "<b>Artist:</b> " & artist of current track'
 ;;
 /prev)
   echo -e 'HTTP/1.1 202 OK\r\n'
   osascript -e 'tell application "Spotify" to previous track'
-  echo previous
+  osascript -e 'tell application "Spotify" to get "<b>Title:</b> " & name of current track & " <br> " & "<b>Album:</b> " & album of current track & " <br> " & "<b>Artist:</b> " & artist of current track'
 ;;
 /play)
   echo -e 'HTTP/1.1 202 OK\r\n'
   osascript -e 'tell application "Spotify" to play'
-  echo play
+  osascript -e 'tell application "Spotify" to get player state'
 ;;
 /pause)
   echo -e 'HTTP/1.1 202 OK\r\n'
   osascript -e 'tell application "Spotify" to pause'
-  echo pause
+  osascript -e 'tell application "Spotify" to get player state'
 ;;
 /pp)
   echo -e 'HTTP/1.1 202 OK\r\n'
   osascript -e 'tell application "Spotify" to playpause'
-  echo playpause
+  osascript -e 'tell application "Spotify" to get player state'
 ;;
 /airplay)
   echo -e 'HTTP/1.1 202 OK\r\n'
-  echo airplay
   osascript airport.scpt
 ;;
 /sleeping)
   echo -e 'HTTP/1.1 202 OK\r\n'
-  echo sleeping
+  echo Computer is sleeping now.
   osascript -e 'tell application "System Events" to sleep'
 ;;
 *)

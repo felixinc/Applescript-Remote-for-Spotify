@@ -7,7 +7,7 @@
 
     var http_request = false;
 
-    function myRequest(url) {
+    function macheRequest(url) {
 
         http_request = false;
 
@@ -27,7 +27,7 @@
         }
 
         if (!http_request) {
-            alert('Ende :( Kann keine XMLHTTP-Instanz erzeugen');
+            document.getElementById("remote").innerHTML = "Request konnte nicht erzeugt werden.";
             return false;
         }
         http_request.onreadystatechange = alertInhalt;
@@ -37,37 +37,72 @@
     }
 
     function alertInhalt() {
+    	document.getElementById("remote").innerHTML = '…';
         if (http_request.readyState == 4) {
-       		if (http_request.responseText.length >= 0)	{
+       		if (http_request.responseText.length > 0)	{
 	       		//alert(http_request.status);
 	            //if (http_request.status >= 200 && http_request.status < 300 ) {
-	            	//alert(http_request.responseText);
-	            	//alert(document.getElementById("remote").innerHTML);
-                	document.getElementById("remote").innerHTML = http_request.responseText;
-    	           }
-        	    else {
-	            	//alert(document.getElementById("remote").innerText);
-                	document.getElementById("remote").innerHTML = 'Bei dem Request ist ein Problem aufgetreten.';
-            	//}
+            	document.getElementById("remote").innerHTML = http_request.responseText;
+    	        //}
+    	    }
+        	else {
+            	document.getElementById("remote").innerHTML = 'Bei dem Request ist ein Problem aufgetreten.';
             }
         }
     }
 </script>
+<style type="text/css">
+ td:active { background-color:#DDDDDD; }
+ td	{ width:90px; height:90px; }
+</style>
 </head>
 <body>
-<table border style="text-align:center; font-size:200%;">
-<tr style="height:100px;">
-<td style="width:100px;" onClick="myRequest('airplay');">🔊</td>
-<td style="width:100px;" onClick="myRequest('info');">ⓘ</td>
-<td style="width:100px;" onClick="myRequest('sleeping');">💤</td>
+<table border style="text-align:center; font-size:200%; color:#000000;">
+<tr>
+<td onClick="macheRequest('airplay');">🔊</td>
+<td onClick="macheRequest('info');">ⓘ</td>
+<td onClick="macheRequest('sleeping');">💤</td>
 </tr>
-<tr style="height:100px;">
-<td onClick="myRequest('prev');">⏪</td>
-<td onClick="myRequest('pp');">▶❙❙</td>
-<td onClick="myRequest('next');">⏩</td>
+<tr>
+<td onClick="macheRequest('prev');">⏪</td>
+<td onClick="macheRequest('pp');">▶❙❙</td>
+<td onClick="macheRequest('next');">⏩</td>
 </tr>
-<tr style="height:100px;">
+<tr>
 <td id="remote" colspan="3" style="font-size:50%;">Remote</td>
 </tr>
 </table>
+
+<!--
+▶︎
+BLACK RIGHT-POINTING TRIANGLE
+Unicode: U+25B6 U+FE0E, UTF-8: E2 96 B6 EF B8 8E
+▸
+BLACK RIGHT-POINTING SMALL TRIANGLE
+Unicode: U+25B8, UTF-8: E2 96 B8
+
+⏪
+BLACK LEFT-POINTING DOUBLE TRIANGLE
+Unicode: U+23EA, UTF-8: E2 8F AA
+⏩
+BLACK RIGHT-POINTING DOUBLE TRIANGLE
+Unicode: U+23E9, UTF-8: E2 8F A9
+▶️
+BLACK RIGHT-POINTING TRIANGLE
+Unicode: U+25B6 U+FE0F, UTF-8: E2 96 B6 EF B8 8F
+❙
+MEDIUM VERTICAL BAR
+Unicode: U+2759, UTF-8: E2 9D 99
+❙
+MEDIUM VERTICAL BAR
+Unicode: U+2759, UTF-8: E2 9D 99
+ℹ️
+INFORMATION SOURCE
+Unicode: U+2139 U+FE0F, UTF-8: E2 84 B9 EF B8 8F
+ℹ︎
+INFORMATION SOURCE
+Unicode: U+2139 U+FE0E, UTF-8: E2 84 B9 EF B8 8E
+ℹℹ️ℹ︎
+🔉🔈
+-->
 </body>

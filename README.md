@@ -15,6 +15,7 @@ This solution works, but at the same time there are a few things to improve, e.g
 
 And of course this stub can easily be augmented into a remote for any other player software that supports Applescript.
 
-To use this software just open a Terminal window, go to the directory where you saved these files and execute ./server.sh. Maybe you have to make it executable first (chmod +x server.sh). Then open your browser and navigate to http://your-ip-address:8080/
+To use this software just open a Terminal window, go to the directory where you saved these files and execute ./server.sh. Maybe you have to make it executable first ("chmod +x server.sh", the same for remote.sh). Then open your browser and navigate to http://your-ip-address:8080/
 
-For the AirPlay functionality enter the name of your AirPlay device in line 1 of airport.scpt, change "Ton" (german for sound) and "Einstellungen" (german for settings) to the naming of the system preferneces in your language and allow gui scripting for this script. All other functions will work without further adjustment.
+For the AirPlay functionality enter the name of your AirPlay device in line 1 of airport.scpt, change line 2 and 3 accordingly to the naming of the system preferences in your language and, when asked, allow gui scripting for this script.
+All other functions will work without further adjustment.
