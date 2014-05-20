@@ -7,7 +7,7 @@
 
     var http_request = false;
 
-    function macheRequest(url) {
+    function macheRequest(method, url) {
 
         http_request = false;
 
@@ -31,7 +31,7 @@
             return false;
         }
         http_request.onreadystatechange = alertInhalt;
-        http_request.open('GET', url, true);
+        http_request.open(method , url, true);
         http_request.send(null);
 
     }
@@ -59,14 +59,14 @@
 <body>
 <table border style="text-align:center; font-size:200%; color:#000000;">
 <tr>
-<td onClick="macheRequest('airplay');">🔊</td>
-<td onClick="macheRequest('info');">ⓘ</td>
-<td onClick="macheRequest('sleeping');">💤</td>
+<td onClick="macheRequest('POST', 'airplay');">🔊</td>
+<td onClick="macheRequest('GET', 'info');">ⓘ</td>
+<td onClick="macheRequest('PUT', 'sleeping');">💤</td>
 </tr>
 <tr>
-<td onClick="macheRequest('prev');">⏪</td>
-<td onClick="macheRequest('pp');">▶❙❙</td>
-<td onClick="macheRequest('next');">⏩</td>
+<td onClick="macheRequest('POST', 'prev');">⏪</td>
+<td onClick="macheRequest('POST', 'pp');">▶❙❙</td>
+<td onClick="macheRequest('POST', 'next');">⏩</td>
 </tr>
 <tr>
 <td id="remote" colspan="3" style="font-size:50%;">Remote</td>

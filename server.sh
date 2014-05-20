@@ -2,6 +2,9 @@ echo Trying to create pipe
 mkfifo /tmp/backpipe
 echo
 
+
+cd $(dirname "$0")
+
 while true
 do
   echo Listening
