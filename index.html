@@ -32,7 +32,10 @@
         }
         http_request.onreadystatechange = alertInhalt;
         http_request.open(method , url, true);
-        http_request.send(null);
+        http_request.send("\r\n\r\n"
+        //	  " 1234567 1234567 1234567 1234567 1234567 1234567 1234567 1234567"
+        //	+ " 1234567 1234567 1234567 1234567 1234567 1234567 1234567 1234567"
+        );	// fill pipe buffer - doesn't solve the problem, maybe the server should give a body length header so that the counterpart knows when the http-datagram is complete
 
     }
 
@@ -56,8 +59,8 @@
  td	{ width:90px; height:90px; }
 </style>
 </head>
-<body>
-<table border style="text-align:center; font-size:200%; color:#000000;">
+<body style="color:#FFFFFF; background-color:#000000;">
+<table border style="text-align:center; font-size:200%; zoom:175%;">
 <tr>
 <td onClick="macheRequest('POST', 'airplay');">🔊</td>
 <td onClick="macheRequest('GET', 'info');">ⓘ</td>
@@ -69,7 +72,7 @@
 <td onClick="macheRequest('POST', 'next');">⏩</td>
 </tr>
 <tr>
-<td id="remote" colspan="3" style="font-size:50%;">Remote</td>
+<td onClick="macheRequest('POST', 'toggleshuffle');" id="remote" colspan="3" style="font-size:50%;">Remote</td>
 </tr>
 </table>
 
